@@ -8,6 +8,8 @@ public class User {
         private String password;
         private String role;
 
+        public void displayInfo(){
+        }
 
     public User(String id, String name, String email, String password, String role) {
         this.id = id;
