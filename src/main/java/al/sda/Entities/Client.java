@@ -1,20 +1,33 @@
 package al.sda.Entities;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.ArrayList;
 import java.util.List;
+@Entity
 public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
     private String password;
     private String role; // gjithmonë "client"
-    private List<Long> reservationIds;
+//    private List<Long> reservationIds;
     public Client(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = "client";
-        this.reservationIds = new ArrayList<>();
+//        this.reservationIds = new ArrayList<>();
     }
+
+    public Client() {
+
+    }
+
     // Getters dhe Setters
     public Long getId() {
         return id;
@@ -43,12 +56,12 @@ public class Client {
     public String getRole() {
         return role;
     }
-    public List<Long> getReservationIds() {
-        return reservationIds;
-    }
-    public void setReservationIds(List<Long> reservationIds) {
-        this.reservationIds = reservationIds;
-    }
+//    public List<Long> getReservationIds() {
+//        return reservationIds;
+//    }
+//    public void setReservationIds(List<Long> reservationIds) {
+//        this.reservationIds = reservationIds;
+//    }
 
     @Override
     public String toString() {
@@ -58,7 +71,7 @@ public class Client {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-                ", reservationIds=" + reservationIds +
+//                ", reservationIds=" + reservationIds +
                 '}';
     }
 }

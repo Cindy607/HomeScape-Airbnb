@@ -37,7 +37,7 @@ public class ClientService {
 //        String reservationId = generateReservationId();
         Reservation reservation = new Reservation(client.getId(), apartment.getId(), startDate, endDate, true);
         reservationDAO.addReservation(reservation); // ruajmë rezervimin në DAO
-        client.getReservationIds().add(reservation.getId()); // ruajmë ID në klient
+//        client.getReservationIds().add(reservation.getId()); // ruajmë ID në klient
         clientFunc.getReservations().add(reservation); // ruajmë rezervimin në ClientFunctionalities
         System.out.println("Reservation created successfully!");
         // Gjenero receipt automatikisht
