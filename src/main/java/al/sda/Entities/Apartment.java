@@ -1,4 +1,4 @@
-package al.sda;
+package al.sda.Entities;
 
 public class Apartment {
         private String id;

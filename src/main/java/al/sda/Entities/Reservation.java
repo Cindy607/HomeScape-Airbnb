@@ -1,4 +1,4 @@
-package al.sda;
+package al.sda.Entities;
 
 import java.time.LocalDate;
 

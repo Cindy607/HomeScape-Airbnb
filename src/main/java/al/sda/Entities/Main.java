@@ -1,4 +1,4 @@
-package al.sda;
+package al.sda.Entities;
 
 public class Main {
     public static void main(String[] args) {
