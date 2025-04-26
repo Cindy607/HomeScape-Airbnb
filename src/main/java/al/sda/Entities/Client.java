@@ -2,14 +2,13 @@ package al.sda.Entities;
 import java.util.ArrayList;
 import java.util.List;
 public class Client {
-    private String id;
+    private Long id;
     private String name;
     private String email;
     private String password;
     private String role; // gjithmonë "client"
-    private List<String> reservationIds;
-    public Client(String id, String name, String email, String password) {
-        this.id = id;
+    private List<Long> reservationIds;
+    public Client(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -17,10 +16,10 @@ public class Client {
         this.reservationIds = new ArrayList<>();
     }
     // Getters dhe Setters
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
@@ -44,10 +43,10 @@ public class Client {
     public String getRole() {
         return role;
     }
-    public List<String> getReservationIds() {
+    public List<Long> getReservationIds() {
         return reservationIds;
     }
-    public void setReservationIds(List<String> reservationIds) {
+    public void setReservationIds(List<Long> reservationIds) {
         this.reservationIds = reservationIds;
     }
 

@@ -1,21 +1,35 @@
 package al.sda.Entities;
 
-public class Apartment {
-        private String id;
-        private String name;
-        private String location;
-        private double pricePerNight;
-        private String hostId;
+import jakarta.persistence.*;
 
-    public Apartment(String id, String name, String location, double pricePerNight, String hostId) {
-        this.id = id;
+@Entity
+@Table(name = "apartments")
+public class Apartment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+    @Column
+        private String name;
+    @Column
+        private String location;
+    @Column
+        private double pricePerNight;
+
+    private Long hostId;
+
+
+    public Apartment(String name, String location, double pricePerNight, Long hostId) {
         this.name = name;
         this.location = location;
         this.pricePerNight = pricePerNight;
         this.hostId = hostId;
     }
 
-    public String getId() {
+    public Apartment() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -31,11 +45,11 @@ public class Apartment {
         return pricePerNight;
     }
 
-    public String getHostId() {
+    public Long getHostId() {
         return hostId;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,7 +65,7 @@ public class Apartment {
         this.pricePerNight = pricePerNight;
     }
 
-    public void setHostId(String hostId) {
+    public void setHostId(Long hostId) {
         this.hostId = hostId;
     }
 

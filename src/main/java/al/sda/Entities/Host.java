@@ -1,23 +1,39 @@
 package al.sda.Entities;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+@Entity
+@Table
 public class Host {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String name;
+    @Column
     private String email;
+    @Column
     private String password;
+
     private String role; // gjithmonë "host"
-    public Host(String id, String name, String email, String password) {
-        this.id = id;
+    public Host(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = "host";
     }
+
+    public Host() {
+
+    }
+
     // Getters dhe Setters
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {

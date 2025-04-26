@@ -16,7 +16,7 @@ public class HostService {
     // Hosti shton një apartament të ri
     public void addApartment(Host host, String name, String location, double pricePerNight) {
         String apartmentId = generateApartmentId();
-        Apartment apartment = new Apartment(apartmentId, name, location, pricePerNight, host.getId());
+        Apartment apartment = new Apartment(name, location, pricePerNight, host.getId());
         apartmentDAO.addApartment(apartment);
         System.out.println("Apartment added successfully: " + name);
     }
@@ -57,7 +57,7 @@ public class HostService {
             System.out.println("You have no apartments, thus no reservations.");
             return;
         }
-        List<String> hostApartmentIds = hostApartments.stream()
+        List<Long> hostApartmentIds = hostApartments.stream()
                 .map(Apartment::getId)
                 .collect(Collectors.toList());
         List<Reservation> reservationsForHost = reservationDAO.getAllReservations().stream()

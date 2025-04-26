@@ -3,15 +3,14 @@ package al.sda.Entities;
 import java.time.LocalDate;
 
 public class Reservation {
-        private String id;
-        private String clientId;
-        private String propertyId;
+        private Long id;
+        private Long clientId;
+        private Long propertyId;
         private LocalDate startDate;
         private LocalDate endDate;
         private Boolean status; // true- active ; false-cancelled
 
-    public Reservation(String id, String clientId, String propertyId, LocalDate startDate, LocalDate endDate, Boolean status) {
-        this.id = id;
+    public Reservation(Long clientId, Long propertyId, LocalDate startDate, LocalDate endDate, Boolean status) {
         this.clientId = clientId;
         this.propertyId = propertyId;
         this.startDate = startDate;
@@ -19,15 +18,15 @@ public class Reservation {
         this.status = status;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public String getClientId() {
+    public Long getClientId() {
         return clientId;
     }
 
-    public String getPropertyId() {
+    public Long getPropertyId() {
         return propertyId;
     }
 
@@ -43,15 +42,15 @@ public class Reservation {
         return status;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setClientId(String clientId) {
+    public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 
-    public void setPropertyId(String propertyId) {
+    public void setPropertyId(Long propertyId) {
         this.propertyId = propertyId;
     }
 
