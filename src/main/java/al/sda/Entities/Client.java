@@ -50,14 +50,17 @@ public class Client {
     public void setReservationIds(List<String> reservationIds) {
         this.reservationIds = reservationIds;
     }
-    // Display info
-    public void displayInfo() {
-        System.out.println("Client ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Role: " + role);
-        System.out.println("Number of Reservations: " + reservationIds.size());
-        System.out.println("Reservations: " + reservationIds);
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", reservationIds=" + reservationIds +
+                '}';
     }
 }
 

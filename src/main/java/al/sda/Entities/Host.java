@@ -1,6 +1,4 @@
 package al.sda.Entities;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Host {
     private String id;
@@ -8,14 +6,12 @@ public class Host {
     private String email;
     private String password;
     private String role; // gjithmonë "host"
-//    private List<String> propertyIds;
     public Host(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = "host";
-//        this.propertyIds = new ArrayList<>();
     }
     // Getters dhe Setters
     public String getId() {
@@ -45,14 +41,6 @@ public class Host {
     public String getRole() {
         return role;
     }
-//    public List<String> getPropertyIds() {
-//        return propertyIds;
-//    }
-//    public void setPropertyIds(List<String> propertyIds) {
-//        this.propertyIds = propertyIds;
-//    }
-
-
     @Override
     public String toString() {
         return "Host{" +
@@ -64,8 +52,6 @@ public class Host {
                 '}';
     }
 }
-
-
 
 
 
