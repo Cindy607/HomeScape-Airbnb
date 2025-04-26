@@ -17,11 +17,11 @@ public class HostFunctionalities {
     }
     public void addApartment(Apartment apartment) {
         apartments.add(apartment);
-        host.getPropertyIds().add(apartment.getId());
+//        host.getPropertyIds().add(apartment.getId());
     }
     public void removeApartment(String apartmentId) {
         apartments.removeIf(a -> a.getId().equals(apartmentId));
-        host.getPropertyIds().remove(apartmentId);
+//        host.getPropertyIds().remove(apartmentId);
     }
     public void showApartments() {
         if (apartments.isEmpty()) {

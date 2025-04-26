@@ -18,53 +18,53 @@ public class HostService {
         String apartmentId = generateApartmentId();
         Apartment apartment = new Apartment(apartmentId, name, location, pricePerNight, host.getId());
         apartmentDAO.addApartment(apartment);
-        host.getPropertyIds().add(apartmentId);
+//        host.getPropertyIds().add(apartmentId);
         System.out.println("Apartment added successfully: " + name);
     }
     // Hosti fshin një apartament që i përket atij
     public void removeApartment(Host host, String apartmentId) {
-        if (!host.getPropertyIds().contains(apartmentId)) {
-            System.out.println("Apartment not found in your list!");
-            return;
-        }
+//        if (!host.getPropertyIds().contains(apartmentId)) {
+//            System.out.println("Apartment not found in your list!");
+//            return;
+//        }
         apartmentDAO.removeApartment(apartmentId);
-        host.getPropertyIds().remove(apartmentId);
+//        host.getPropertyIds().remove(apartmentId);
         System.out.println("Apartment removed successfully: " + apartmentId);
     }
     // Hosti shikon të gjitha apartamentet që ka
     public void viewOwnApartments(Host host) {
-        List<String> propertyIds = host.getPropertyIds();
-        if (propertyIds.isEmpty()) {
-            System.out.println("You have no apartments yet.");
-            return;
-        }
+//        List<String> propertyIds = host.getPropertyIds();
+//        if (propertyIds.isEmpty()) {
+//            System.out.println("You have no apartments yet.");
+//            return;
+//        }
         System.out.println("Your apartments:");
-        for (String apartmentId : propertyIds) {
-            Apartment apartment = apartmentDAO.findApartmentById(apartmentId);
-            if (apartment != null) {
-                System.out.println(apartment);
-            }
-        }
+//        for (String apartmentId : propertyIds) {
+//            Apartment apartment = apartmentDAO.findApartmentById(apartmentId);
+//            if (apartment != null) {
+//                System.out.println(apartment);
+//            }
+//        }
     }
     // Hosti shikon rezervimet për apartamentet e tij
     public void viewReservationsForMyApartments(Host host) {
-        List<String> propertyIds = host.getPropertyIds();
-        if (propertyIds.isEmpty()) {
-            System.out.println("You have no apartments, thus no reservations.");
-            return;
-        }
-        List<Reservation> allReservations = reservationDAO.getAllReservations();
-        List<Reservation> reservationsForMyApartments = allReservations.stream()
-                .filter(r -> propertyIds.contains(r.getPropertyId()))
-                .collect(Collectors.toList());
-        if (reservationsForMyApartments.isEmpty()) {
-            System.out.println("No reservations found for your apartments.");
-        } else {
-            System.out.println("Reservations for your apartments:");
-            for (Reservation r : reservationsForMyApartments) {
-                System.out.println(r);
-            }
-        }
+//        List<String> propertyIds = host.getPropertyIds();
+//        if (propertyIds.isEmpty()) {
+//            System.out.println("You have no apartments, thus no reservations.");
+//            return;
+//        }
+//        List<Reservation> allReservations = reservationDAO.getAllReservations();
+//        List<Reservation> reservationsForMyApartments = allReservations.stream()
+//                .filter(r -> propertyIds.contains(r.getPropertyId()))
+//                .collect(Collectors.toList());
+//        if (reservationsForMyApartments.isEmpty()) {
+//            System.out.println("No reservations found for your apartments.");
+//        } else {
+//            System.out.println("Reservations for your apartments:");
+//            for (Reservation r : reservationsForMyApartments) {
+//                System.out.println(r);
+//            }
+//        }
     }
     // Private method për të gjeneruar ID unike
     private String generateApartmentId() {

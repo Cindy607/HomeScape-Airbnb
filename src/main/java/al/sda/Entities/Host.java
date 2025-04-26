@@ -1,20 +1,21 @@
 package al.sda.Entities;
 import java.util.ArrayList;
 import java.util.List;
+
 public class Host {
     private String id;
     private String name;
     private String email;
     private String password;
     private String role; // gjithmonë "host"
-    private List<String> propertyIds;
+//    private List<String> propertyIds;
     public Host(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = "host";
-        this.propertyIds = new ArrayList<>();
+//        this.propertyIds = new ArrayList<>();
     }
     // Getters dhe Setters
     public String getId() {
@@ -44,20 +45,23 @@ public class Host {
     public String getRole() {
         return role;
     }
-    public List<String> getPropertyIds() {
-        return propertyIds;
-    }
-    public void setPropertyIds(List<String> propertyIds) {
-        this.propertyIds = propertyIds;
-    }
-    // Display info
-    public void displayInfo() {
-        System.out.println("Host ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Role: " + role);
-        System.out.println("Number of Properties: " + propertyIds.size());
-        System.out.println("Properties: " + propertyIds);
+//    public List<String> getPropertyIds() {
+//        return propertyIds;
+//    }
+//    public void setPropertyIds(List<String> propertyIds) {
+//        this.propertyIds = propertyIds;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Host{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
 
