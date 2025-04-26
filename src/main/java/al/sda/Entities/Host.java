@@ -11,16 +11,12 @@ public class Host extends User {
         this.propertyIds = new ArrayList<>();
     }
 
-    public void addProperty(String propertyId) {
-        propertyIds.add(propertyId);
-    }
-
-    public void removeProperty(String propertyId) {
-        propertyIds.remove(propertyId);
-    }
-
     public List<String> getPropertyIds() {
         return propertyIds;
+    }
+
+    public void setPropertyIds(List<String> propertyIds) {
+        this.propertyIds = propertyIds;
     }
 
     @Override

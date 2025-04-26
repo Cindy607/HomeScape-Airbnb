@@ -1,3 +1,5 @@
+package al.sda.Config;
+
 import al.sda.Entities.Apartment;
 import al.sda.Entities.Host;
 import al.sda.Entities.Reservation;

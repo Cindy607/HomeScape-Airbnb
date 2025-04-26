@@ -8,20 +8,20 @@ public class ApartmentDAO {
 
         private List<Apartment> apartmentList = new ArrayList<>();
 
-        public void addProperty(Apartment property) {
-            apartmentList.add(property);
+        public void addApartment(Apartment apartment) {
+            apartmentList.add(apartment);
         }
 
-        public Apartment findPropertyById(String id) {
-            for (Apartment property : apartmentList) {
-                if (property.getId().equals(id)) {
-                    return property;
+        public Apartment findApartmentById(String id) {
+            for (Apartment apartment : apartmentList) {
+                if (apartment.getId().equals(id)) {
+                    return apartment;
                 }
             }
             return null;
         }
 
-        public List<Apartment> getAllProperties() {
+        public List<Apartment> getAllApartments() {
             return apartmentList;
         }
     }

@@ -1,6 +1,5 @@
 package al.sda.Entities;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,18 +11,12 @@ public class Client extends User {
         this.reservationIds = new ArrayList<>();
     }
 
-
-    public void addReservation(String reservationId) {
-        reservationIds.add(reservationId);
-    }
-
-
-    public void removeReservation(String reservationId) {
-        reservationIds.remove(reservationId);
-    }
-
     public List<String> getReservationIds() {
         return reservationIds;
+    }
+
+    public void setReservationIds(List<String> reservationIds) {
+        this.reservationIds = reservationIds;
     }
 
     @Override
