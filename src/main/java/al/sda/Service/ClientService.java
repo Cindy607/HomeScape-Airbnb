@@ -87,4 +87,8 @@ public class ClientService {
     private String generateReservationId() {
         return "R" + System.currentTimeMillis();
     }
+
+    public ApartmentDAO getApartmentDAO() {
+        return apartmentDAO;
+    }
 }

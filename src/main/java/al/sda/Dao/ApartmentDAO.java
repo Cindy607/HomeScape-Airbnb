@@ -33,6 +33,8 @@ public class ApartmentDAO {
             System.out.println("Apartment with ID " + apartmentId + " not found.");
         }
     }
+
+
 }
 
 
