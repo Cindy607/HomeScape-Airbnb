@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Reservation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-client-background">
+    <div class="container">
+        <h1>Make Reservation</h1>
+        <form id="makeReservationForm">
+            <input type="text" id="apartmentId" placeholder="Apartment ID" required><br>
+            <input type="date" id="startDate" required><br>
+            <input type="date" id="endDate" required><br>
+            <button type="submit">Reserve</button>
+        </form>
+
+        <button class="back-button" onclick="window.location.href='client-menu.html'">⬅️ Back to Client Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const makeReservationForm = document.getElementById('makeReservationForm');
+    if (makeReservationForm) {
+        makeReservationForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const apartmentId = parseInt(document.getElementById('apartmentId').value.trim());
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const clientId = parseInt(localStorage.getItem('clientId'));
+
+            const reservation = { clientId, apartmentId, startDate, endDate };
+
+            const response = await fetch('http://localhost:8080/reservations/make', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reservation)
+            });
+
+            if (response.ok) {
+                alert("Reservation successful!");
+                window.location.href = 'client-menu.html';
+            } else {
+                alert("Error making reservation.");
+            }
+        });
+    }
+});
+    </script>
+</body>
+</html>

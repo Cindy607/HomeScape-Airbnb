@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Apartment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-host-background">
+    <div class="container">
+        <h1>Remove Apartment</h1>
+        <form id="removeApartmentForm">
+            <input type="text" id="apartmentId" placeholder="Apartment ID to Remove" required><br>
+            <button type="submit">Remove Apartment</button>
+        </form>
+
+        <button class="back-button" onclick="window.location.href='host-menu.html'">⬅️ Back to Host Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const removeApartmentForm = document.getElementById('removeApartmentForm');
+            if (removeApartmentForm) {
+                removeApartmentForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const apartmentId = document.getElementById('apartmentId').value.trim();
+
+                    const response = await fetch(`http://localhost:8080/apartments/${apartmentId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert("Apartment removed successfully!");
+                        window.location.href = 'host-menu.html';
+                    } else {
+                        alert("Error removing apartment.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

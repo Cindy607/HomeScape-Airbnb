@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Apartment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-host-background">
+    <div class="container">
+        <h1>Add Apartment</h1>
+        <form id="addApartmentForm">
+            <input type="text" id="apartmentName" placeholder="Apartment Name" required><br>
+            <input type="text" id="apartmentLocation" placeholder="Location" required><br>
+            <input type="number" id="apartmentPrice" placeholder="Price Per Night" required><br>
+            <button type="submit">Add Apartment</button>
+        </form>
+        <button class="back-button" onclick="window.location.href='host-menu.html'">⬅️ Back to Host Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const addApartmentForm = document.getElementById('addApartmentForm');
+    if (addApartmentForm) {
+        addApartmentForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const name = document.getElementById('apartmentName').value.trim();
+            const location = document.getElementById('apartmentLocation').value.trim();
+            const price = parseFloat(document.getElementById('apartmentPrice').value.trim());
+            const hostId = parseInt(localStorage.getItem('hostId'));
+
+            const apartment = { name, location, pricePerNight: price, hostId };
+
+            const response = await fetch('http://localhost:8080/apartments/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(apartment)
+            });
+
+            if (response.ok) {
+                alert("Apartment added successfully!");
+                window.location.href = 'host-menu.html';
+            } else {
+                alert("Error adding apartment.");
+            }
+        });
+    }
+});
+
+    </script>
+</body>
+</html>

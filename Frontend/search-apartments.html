@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Apartments</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-client-background">
+    <div class="container">
+        <h1>Search Apartments</h1>
+        <form id="searchForm">
+            <input type="text" id="location" placeholder="Enter Location" required><br>
+            <button type="submit">Search</button>
+        </form>
+        <ul id="searchResults"></ul>
+
+        <button class="back-button" onclick="window.location.href='client-menu.html'">⬅️ Back to Client Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const location = document.getElementById('location').value.trim();
+
+                    const response = await fetch(`http://localhost:8080/apartments/search?location=${location}`);
+                    if (response.ok) {
+                        const apartments = await response.json();
+                        let list = document.getElementById('searchResults');
+                        list.innerHTML = "";
+                        apartments.forEach(apartment => {
+                            const item = document.createElement('li');
+                            item.textContent = `Apartment ID: ${apartment.id} | ${apartment.name} - ${apartment.location} - ${apartment.pricePerNight}€ per night`;
+                            list.appendChild(item);
+                        });
+                    } else {
+                        alert("Error searching apartments.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

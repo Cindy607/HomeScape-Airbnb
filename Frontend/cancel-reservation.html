@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Reservation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-client-background">
+    <div class="container">
+        <h1>Cancel Reservation</h1>
+        <form id="cancelReservationForm">
+            <input type="text" id="reservationId" placeholder="Reservation ID to Cancel" required><br>
+            <button type="submit">Cancel Reservation</button>
+        </form>
+
+        <button class="back-button" onclick="window.location.href='client-menu.html'">⬅️ Back to Client Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cancelReservationForm = document.getElementById('cancelReservationForm');
+            if (cancelReservationForm) {
+                cancelReservationForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const reservationId = document.getElementById('reservationId').value.trim();
+
+                    const response = await fetch(`http://localhost:8080/reservations/${reservationId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert("Reservation cancelled successfully!");
+                        window.location.href = 'client-menu.html';
+                    } else {
+                        alert("Error cancelling reservation.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

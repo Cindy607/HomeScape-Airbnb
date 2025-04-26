@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Different Backgrounds for Each Page */
+.index-background {
+    background-image: url('pexels-davidmcbee-1546168.jpg');
+}
+
+.register-host-background {
+    background-image: url('images-2.jpeg');
+}
+
+.register-client-background {
+    background-image: url('images-4.jpeg');
+}
+
+.login-host-background {
+    background-image: url('images-3.jpeg');
+}
+
+.login-client-background {
+    background-image: url('real-estate-texture-background-8_1910138.jpg!bwr800.jpeg');
+}
+
+/* Container Styling */
+.container {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Stylish Titles (h1) */
+h1 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    font-size: 44px; /* Bigger size */
+    color: #006400; /* Dark green */
+    text-shadow: 0 0 8px rgba(0, 100, 0, 0.7), 0 0 20px rgba(0, 100, 0, 0.5);
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Fade In Animation for Titles */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Inputs */
+form input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+form input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0,123,255,0.5);
+    outline: none;
+}
+
+/* Form Buttons */
+form button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Menu Buttons */
+.menu button {
+    width: 100%;
+    padding: 16px;
+    margin: 10px 0;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu button:hover {
+    background-color: #1e7e34;
+}
+
+.back-button {
+    width: 150px;
+    padding: 14px;
+    margin-top: 30px; /* More space from other buttons */
+    margin-left: 0; /* Move to the left */
+    background-color: #006400; /* Dark green */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #004d00; /* Even darker green on hover */
+    transform: translateX(-5px); /* Slight left movement for dynamic feel */
+}

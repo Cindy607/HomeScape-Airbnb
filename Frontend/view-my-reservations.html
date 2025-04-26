@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View My Reservations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-client-background">
+    <div class="container">
+        <h1>My Reservations</h1>
+        <ul id="reservationsList"></ul>
+
+        <button class="back-button" onclick="window.location.href='client-menu.html'">⬅️ Back to Client Menu</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+    const clientId = parseInt(localStorage.getItem('clientId'));
+
+    const response = await fetch(`http://localhost:8080/reservations/client/${clientId}`);
+    if (response.ok) {
+        const reservations = await response.json();
+        let list = document.getElementById('reservationsList');
+        reservations.forEach(reservation => {
+            const item = document.createElement('li');
+            item.textContent = `Reservation ID: ${reservation.id} | Apartment ID: ${reservation.apartmentId} | From: ${reservation.startDate} | To: ${reservation.endDate}`;
+            list.appendChild(item);
+        });
+    } else {
+        alert("Error fetching reservations.");
+    }
+});
+
+    </script>
+</body>
+</html>

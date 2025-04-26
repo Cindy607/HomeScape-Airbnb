@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View My Apartments</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-host-background">
+    <div class="container">
+        <h1>My Apartments</h1>
+        <ul id="apartmentsList"></ul>
+
+        <button class="back-button" onclick="window.location.href='host-menu.html'">⬅️ Back to Host Menu</button>
+    </div>
+
+    <script>
+       document.addEventListener("DOMContentLoaded", async function () {
+    const hostId = parseInt(localStorage.getItem('hostId'));
+
+    const response = await fetch(`http://localhost:8080/apartments/host/${hostId}`);
+    if (response.ok) {
+        const apartments = await response.json();
+        let list = document.getElementById('apartmentsList');
+        apartments.forEach(apartment => {
+            const item = document.createElement('li');
+            item.textContent = `Apartment: ${apartment.name} | Location: ${apartment.location} | Price per Night: ${apartment.pricePerNight} €`;
+            list.appendChild(item);
+        });
+    } else {
+        alert("Error fetching apartments.");
+    }
+});
+
+    </script>
+</body>
+</html>
