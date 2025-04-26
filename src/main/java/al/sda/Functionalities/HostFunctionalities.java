@@ -33,9 +33,7 @@ public class HostFunctionalities {
             System.out.println(a);
         }
     }
-    public void addReservation(Reservation reservation) {
-        reservations.add(reservation);
-    }
+
     public void showReservations() {
         if (reservations.isEmpty()) {
             System.out.println("No reservations found.");
