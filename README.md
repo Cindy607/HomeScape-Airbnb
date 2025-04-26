@@ -88,7 +88,7 @@ This system simulates the basic functionality of an Airbnb platform where Hosts 
 
 ## 🧑‍💻 Project Authors
 
-- **[Your Name Here]**
+- **[Alkeo , Vitori , Klea , Sindi ]**
 - Technologies: Java, Spring Boot, HTML, CSS, JavaScript
 - GitHub: [Insert your GitHub Profile Link]
 
