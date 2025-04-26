@@ -4,7 +4,6 @@ import al.sda.Dao.ReservationDAO;
 import al.sda.Entities.Apartment;
 import al.sda.Entities.Host;
 import al.sda.Entities.Reservation;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 public class HostService {
@@ -67,11 +66,12 @@ public class HostService {
             }
         }
     }
-    // Gjeneron një ID unike për apartamentin
+    // Private method për të gjeneruar ID unike
     private String generateApartmentId() {
         return "A" + System.currentTimeMillis();
     }
 }
+
 
 
 

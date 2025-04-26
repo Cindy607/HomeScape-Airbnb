@@ -18,7 +18,7 @@ public class ClientService {
         this.reservationDAO = reservationDAO;
         this.receiptService = receiptService;
     }
-    // Search Apartments by location
+    // Search apartments by location
     public void searchApartmentsByLocation(String location) {
         List<Apartment> apartments = apartmentDAO.getAllApartments().stream()
                 .filter(a -> a.getLocation().equalsIgnoreCase(location))
@@ -32,18 +32,18 @@ public class ClientService {
             }
         }
     }
-    // Make Reservation
+    // Make reservation
     public void makeReservation(Client client, ClientFunctionalities clientFunc, Apartment apartment, LocalDate startDate, LocalDate endDate) {
         String reservationId = generateReservationId();
         Reservation reservation = new Reservation(reservationId, client.getId(), apartment.getId(), startDate, endDate, true);
         reservationDAO.addReservation(reservation); // ruajmë rezervimin në DAO
-        client.getReservationIds().add(reservationId); // ruajmë ID-në në klient
-        clientFunc.getReservations().add(reservation); // ruajmë rezervimin e plotë te ClientFunctionalities
+        client.getReservationIds().add(reservationId); // ruajmë ID në klient
+        clientFunc.getReservations().add(reservation); // ruajmë rezervimin në ClientFunctionalities
         System.out.println("Reservation created successfully!");
         // Gjenero receipt automatikisht
         receiptService.generateReceipt(reservation, apartment);
     }
-    // View Client Reservations
+    // View my reservations
     public void viewMyReservations(Client client, ClientFunctionalities clientFunc) {
         List<Reservation> reservations = clientFunc.getReservations();
         if (reservations.isEmpty()) {
@@ -55,15 +55,15 @@ public class ClientService {
             System.out.println(r);
         }
     }
-    // Cancel Reservation
+    // Cancel reservation
     public void cancelReservation(Client client, ClientFunctionalities clientFunc, String reservationId) {
         List<Reservation> reservations = clientFunc.getReservations();
         boolean found = false;
         for (Reservation r : reservations) {
             if (r.getId().equals(reservationId)) {
-                if (r.getClientId().equals(client.getId())) { // kontrollojmë që rezervimi është i klientit
+                if (r.getClientId().equals(client.getId())) { // kontrollojmë që është rezervimi i klientit
                     if (r.getStatus()) { // nëse është aktive
-                        r.setStatus(false); // bëhet e anuluar
+                        r.setStatus(false);
                         Reservation realReservation = reservationDAO.findReservationById(reservationId);
                         if (realReservation != null) {
                             realReservation.setStatus(false); // përditësojmë edhe në DAO
@@ -83,13 +83,8 @@ public class ClientService {
             System.out.println("Reservation with ID " + reservationId + " not found.");
         }
     }
-    // Private method: generate Reservation ID
+    // Private method për të gjeneruar ID unike
     private String generateReservationId() {
         return "R" + System.currentTimeMillis();
     }
 }
-
-
-
-
-

@@ -3,7 +3,7 @@ package al.sda.Config;
 import al.sda.Entities.Apartment;
 import al.sda.Entities.Host;
 import al.sda.Entities.Reservation;
-import al.sda.Entities.User;
+import al.sda.Entities.Client;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -36,7 +36,7 @@ public class HibernateConfiguration {
 
             // Set Hibernate properties
             configuration.setProperties(properties);
-            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Client.class);
             configuration.addAnnotatedClass(Apartment.class);
             configuration.addAnnotatedClass(Host.class);
             configuration.addAnnotatedClass(Reservation.class);
