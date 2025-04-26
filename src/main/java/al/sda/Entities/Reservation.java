@@ -1,9 +1,17 @@
 package al.sda.Entities;
 
-import java.time.LocalDate;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+@Entity
 public class Reservation {
+    @Id
+    @GeneratedValue
         private Long id;
+    @Column
         private Long clientId;
         private Long propertyId;
         private LocalDate startDate;
@@ -16,6 +24,10 @@ public class Reservation {
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
+    }
+
+    public Reservation() {
+
     }
 
     public Long getId() {
