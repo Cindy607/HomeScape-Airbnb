@@ -1,7 +1,25 @@
+// 🚀 These navigation functions must be OUTSIDE DOMContentLoaded
+function registerHost() {
+    window.location.href = 'register-host.html';
+}
+
+function registerClient() {
+    window.location.href = 'register-client.html';
+}
+
+function loginHost() {
+    window.location.href = 'login-host.html';
+}
+
+function loginClient() {
+    window.location.href = 'login-client.html';
+}
+
 function exitApp() {
     alert("Thank you for using the system. Goodbye!");
 }
 
+// 🚀 This is for forms and dynamic actions
 document.addEventListener("DOMContentLoaded", function () {
     // Host Registration
     const hostRegisterForm = document.getElementById('hostRegisterForm');
@@ -67,67 +85,67 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Host Login
     const hostLoginForm = document.getElementById('hostLoginForm');
-if (hostLoginForm) {
-    hostLoginForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const email = document.getElementById('hostEmail').value.trim();
-        const password = document.getElementById('hostPassword').value.trim();
+    if (hostLoginForm) {
+        hostLoginForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('hostEmail').value.trim();
+            const password = document.getElementById('hostPassword').value.trim();
 
-        const host = { email, password };
+            const host = { email, password };
 
-        const response = await fetch('http://localhost:8080/hosts/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(host)
-        });
+            const response = await fetch('http://localhost:8080/hosts/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(host)
+            });
 
-        if (response.ok) {
-            const data = await response.json();
-            if (data) {
-                localStorage.setItem('hostId', data.id); // 🚀 Save Host ID
-                alert("Host login successful!");
-                window.location.href = 'host-menu.html';
+            if (response.ok) {
+                const data = await response.json();
+                if (data) {
+                    localStorage.setItem('hostId', data.id);
+                    alert("Host login successful!");
+                    window.location.href = 'host-menu.html';
+                } else {
+                    alert("Invalid email or password for Host.");
+                }
             } else {
-                alert("Invalid email or password for Host.");
+                alert("Error connecting to server.");
             }
-        } else {
-            alert("Error connecting to server.");
-        }
-    });
-}
-
-
-const clientLoginForm = document.getElementById('clientLoginForm');
-if (clientLoginForm) {
-    clientLoginForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const email = document.getElementById('clientEmail').value.trim();
-        const password = document.getElementById('clientPassword').value.trim();
-
-        const client = { email, password };
-
-        const response = await fetch('http://localhost:8080/clients/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(client)
         });
+    }
 
-        if (response.ok) {
-            const data = await response.json();
-            if (data) {
-                localStorage.setItem('clientId', data.id); // 🚀 Save Client ID
-                alert("Client login successful!");
-                window.location.href = 'client-menu.html';
+    // Client Login
+    const clientLoginForm = document.getElementById('clientLoginForm');
+    if (clientLoginForm) {
+        clientLoginForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('clientEmail').value.trim();
+            const password = document.getElementById('clientPassword').value.trim();
+
+            const client = { email, password };
+
+            const response = await fetch('http://localhost:8080/clients/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(client)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data) {
+                    localStorage.setItem('clientId', data.id);
+                    alert("Client login successful!");
+                    window.location.href = 'client-menu.html';
+                } else {
+                    alert("Invalid email or password for Client.");
+                }
             } else {
-                alert("Invalid email or password for Client.");
+                alert("Error connecting to server.");
             }
-        } else {
-            alert("Error connecting to server.");
-        }
-    });
-}
-
+        });
+    }
 
     // Validation helper functions
     function validateName(name) {
@@ -135,12 +153,12 @@ if (clientLoginForm) {
     }
 
     function validateEmail(email) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
         return regex.test(email);
     }
 
     function validatePassword(password) {
-        const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        const regex = /^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$/;
         return regex.test(password);
     }
 });
